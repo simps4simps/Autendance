@@ -1,0 +1,45 @@
+#app {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#left-navigation {
+  width: 15%;
+  height: 90%;
+  min-width: 200px;
+  background-color: var(--primary);
+  margin: 1rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+#left-navigation a {
+  text-decoration: none !important;
+  color: var(--text) !important;
+}
+
+#main-display {
+  width: 78%;
+  height: 90%;
+  min-width: 500px;
+  background-color: var(--primary);
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+#main-display > div {
+  margin: 1.5rem;
+}
+
+#settings-link {
+  position: absolute;
+  bottom: 0;
+}
