@@ -6,7 +6,8 @@ import Archive from "./components/Archive/Archive";
 import PersonSearch from "./components/PersonSearch/PersonSearch";
 import Assign from "./components/Assign/Assign";
 import Settings from "./components/Settings/Settings";
-
+// import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
+import { MenuIcon } from "./components/IconsExport";
 const App = () => {
   return (
     <div id="app">
@@ -16,7 +17,14 @@ const App = () => {
             <Nav />
           </nav>
 
+          {/* <nav id="hamburger-nav">
+            <HamburgerNav />
+          </nav> */}
+
           <div id="main-display">
+            <div className="hamburger-menu-icon">
+              <MenuIcon />
+            </div>
             <Routes>
               <Route path="/" index Component={Dashboard} />
               <Route path="/archives" index Component={Archive} />
