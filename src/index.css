@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Roboto-medium;
+  src: url("./assets/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+  font-family: Roboto-regular;
+  src: url("./assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: Roboto-thin;
+  src: url("./assets/fonts/Roboto-Thin.ttf");
+}
+
+:root {
+  --text: #ebeff4;
+  --background: #040608;
+  --primary: #9fbad5;
+  --secondary: #2f567d;
+  --accent: #6296cc;
+  --linearPrimarySecondary: linear-gradient(#9fbad5, #2f567d);
+  --linearPrimaryAccent: linear-gradient(#9fbad5, #6296cc);
+  --linearSecondaryAccent: linear-gradient(#2f567d, #6296cc);
+  --radialPrimarySecondary: radial-gradient(#9fbad5, #2f567d);
+  --radialPrimaryAccent: radial-gradient(#9fbad5, #6296cc);
+  --radialSecondaryAccent: radial-gradient(#2f567d, #6296cc);
+
+  background-color: var(--background);
+  color: var(--text);
+  font-family: Roboto-regular;
+}
