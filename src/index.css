@@ -21,9 +21,9 @@
 :root {
   --text: #ebeff4;
   --background: #040608;
-  --primary: #9fbad5;
-  --secondary: #2f567d;
-  --accent: #6296cc;
+  --primary: #09111a;
+  --secondary: #255b92;
+  --accent: #325a85;
   --linearPrimarySecondary: linear-gradient(#9fbad5, #2f567d);
   --linearPrimaryAccent: linear-gradient(#9fbad5, #6296cc);
   --linearSecondaryAccent: linear-gradient(#2f567d, #6296cc);
