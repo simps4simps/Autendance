@@ -12,9 +12,7 @@
 }
 
 #left-navigation {
-  width: 15%;
   height: 90%;
-  min-width: 200px;
   background-color: var(--primary);
   margin: 1rem;
   border-radius: 10px;
@@ -27,9 +25,8 @@
 }
 
 #main-display {
-  width: 78%;
+  width: 80%;
   height: 90%;
-  min-width: 500px;
   background-color: var(--primary);
   margin: 1rem;
   border-radius: 10px;
@@ -39,7 +36,22 @@
   margin: 1.5rem;
 }
 
-#settings-link {
-  position: absolute;
-  bottom: 0;
+@media screen and (max-width: 649px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  #left-navigation {
+    height: auto !important;
+    width: 90% !important;
+  }
+  #main-display {
+    width: 90% !important;
+    height: 90%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  #left-navigation {
+    display: none;
+  }
 }
