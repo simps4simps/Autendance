@@ -23,7 +23,7 @@
 
 #left-navigation {
   height: 90%;
-  background-color: var(--primary);
+  background-color: var(--transparent-background);
   margin: 1rem;
   border-radius: 10px;
   position: relative;
@@ -42,7 +42,7 @@
 #main-display {
   width: 80%;
   height: 90%;
-  background-color: var(--primary);
+  background-color: var(--transparent-background);
   margin: 1rem;
   border-radius: 10px;
   position: relative;
