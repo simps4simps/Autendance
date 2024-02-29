@@ -6,17 +6,72 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  margin: 1rem;
+  margin: 0.3rem;
   padding: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-bottom: 3px solid var(--accent);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
-  background-color: var(--background);
+  background-color: var(--primary);
   border-radius: 10px;
   margin-top: 1.5rem;
+  transition-duration: 0.2s;
+}
+
+.links:hover {
+  background-color: #ffffffb4;
+  color: var(--primary);
+}
+
+#brand-name > h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem;
+}
+
+#account-brief {
+  position: absolute;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--linearSecondaryAccent);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--text);
+  transition-duration: 0.2s;
+}
+
+#account-brief:hover {
+  background: var(--secondary);
+}
+
+#account-brief {
+  font-size: 0.8rem;
+}
+
+#account-brief p {
+  padding: 5px;
+}
+
+#account-brief svg:hover {
+  color: var(--background);
+}
+
+#account-brief svg {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#brand-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .links * {
@@ -24,15 +79,14 @@
 }
 
 .links > svg {
-  font-size: 1.3rem;
-}
-
-#settings-link {
-  position: absolute;
-  bottom: 0;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 786px) {
+  #brand-name {
+    display: none;
+  }
+
   .links p {
     display: none !important;
   }
@@ -47,6 +101,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .links {
+    margin: 0.5rem !important;
   }
 
   #settings-link {
