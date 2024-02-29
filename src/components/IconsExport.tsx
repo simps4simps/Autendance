@@ -4,6 +4,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export {
   SpaceDashboardIcon,
@@ -12,4 +13,5 @@ export {
   AssignmentIndIcon,
   SettingsIcon,
   MenuIcon,
+  LogoutIcon,
 };
