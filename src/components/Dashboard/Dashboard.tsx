@@ -1,7 +1,13 @@
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div id="dashboard-wrapper">
+      <div className="dashboard-cols"></div>
+
+      <div className="dashboard-cols"></div>
+    </div>
+  );
 };
 
 export default Dashboard;
