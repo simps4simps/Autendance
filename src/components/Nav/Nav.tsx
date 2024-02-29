@@ -2,6 +2,7 @@ import "./Nav.css";
 import {
   AssignmentIndIcon,
   InboxIcon,
+  LogoutIcon,
   PersonSearchIcon,
   SettingsIcon,
   SpaceDashboardIcon,
@@ -13,6 +14,9 @@ const Nav = () => {
   return (
     <>
       <div className="nav-wrapper">
+        <div id="brand-name">
+          <h2>Autendance</h2>
+        </div>
         <Link to={"/"}>
           <div className="links" title="Dashboard">
             <SpaceDashboardIcon />
@@ -44,8 +48,17 @@ const Nav = () => {
         <Link to={"/settings"}>
           <div className="links" id="settings-link" title="Settings">
             <SettingsIcon />
+            <p>Settings</p>
           </div>
         </Link>
+
+        <div id="account-brief">
+          <div id="user">
+            <p>User Name</p>
+          </div>
+
+          <LogoutIcon />
+        </div>
 
         <Outlet />
       </div>
