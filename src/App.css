@@ -48,6 +48,18 @@
   position: relative;
 }
 
+#hamburger-nav {
+  opacity: 0;
+  visibility: hidden;
+  transition-duration: 0.3s;
+  z-index: 2;
+}
+
+.showMenu {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 @media screen and (max-width: 649px) {
   .wrapper {
     flex-direction: column;

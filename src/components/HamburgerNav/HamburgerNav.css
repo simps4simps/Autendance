@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 1;
 }
 
 .links-ham {
@@ -26,4 +27,33 @@
 
 .links-ham * {
   margin: 0.3rem;
+}
+
+#exit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+
+#exit-btn p {
+  font-size: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  transition-duration: 0.3s;
+}
+
+#exit-btn > svg {
+  color: var(--text);
+  font-size: 3rem;
+}
+
+#exit-btn:hover p {
+  width: 50px;
+  opacity: 1;
+  visibility: visible;
 }

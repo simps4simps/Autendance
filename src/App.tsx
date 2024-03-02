@@ -6,9 +6,16 @@ import Archive from "./components/Archive/Archive";
 import PersonSearch from "./components/PersonSearch/PersonSearch";
 import Assign from "./components/Assign/Assign";
 import Settings from "./components/Settings/Settings";
-// import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
+import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
 import { MenuIcon } from "./components/IconsExport";
+import { useRef } from "react";
 const App = () => {
+  const menuRef = useRef<HTMLElement>({} as HTMLElement);
+
+  const openMenu = () => {
+    menuRef.current.classList.add("showMenu");
+  };
+
   return (
     <div id="app">
       <div className="wrapper">
@@ -17,12 +24,12 @@ const App = () => {
             <Nav />
           </nav>
 
-          {/* <nav id="hamburger-nav">
-            <HamburgerNav />
-          </nav> */}
+          <nav id="hamburger-nav" ref={menuRef}>
+            <HamburgerNav parent={menuRef} />
+          </nav>
 
           <div id="main-display">
-            <div className="hamburger-menu-icon">
+            <div className="hamburger-menu-icon" onClick={openMenu}>
               <MenuIcon />
             </div>
             <Routes>
