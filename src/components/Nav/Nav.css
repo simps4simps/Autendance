@@ -94,6 +94,11 @@
   .nav-wrapper {
     margin: 0;
   }
+
+  #account-brief {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 649px) {
@@ -109,5 +114,12 @@
 
   #settings-link {
     position: relative;
+  }
+
+  #account-brief {
+    position: relative;
+    flex-direction: row;
+    padding: 0.5rem;
+    border-radius: 10px;
   }
 }
