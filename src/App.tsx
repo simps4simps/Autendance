@@ -29,8 +29,12 @@ const App = () => {
           </nav>
 
           <div id="main-display">
-            <div className="hamburger-menu-icon" onClick={openMenu}>
-              <MenuIcon />
+            <div id="top-nav-mobile" onClick={openMenu}>
+              <span>
+                <MenuIcon />
+              </span>
+
+              <h2>Autendance</h2>
             </div>
             <Routes>
               <Route path="/" index Component={Dashboard} />
