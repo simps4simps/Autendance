@@ -26,7 +26,7 @@
   --secondary: #33744d;
   --accent: #53c57f;
   --linearPrimarySecondary: linear-gradient(#9fc9af, #33744d);
-  --linearPrimaryAccent: linear-gradient(#9fc9af, #53c57f);
+  --linearPrimaryAccent: linear-gradient(to left, #9fc9af63, #53c57f);
   --linearSecondaryAccent: linear-gradient(#33744d, #53c57f);
   --radialPrimarySecondary: radial-gradient(#9fc9af, #33744d);
   --radialPrimaryAccent: radial-gradient(#9fc9af, #53c57f);
