@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Nav from "./components/Nav/Nav";
 import Archive from "./components/Archive/Archive";
@@ -8,9 +8,33 @@ import Assign from "./components/Assign/Assign";
 import Settings from "./components/Settings/Settings";
 import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
 import { MenuIcon } from "./components/IconsExport";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Login from "./components/Login/Login";
+import { useCookies } from "react-cookie";
+
 const App = () => {
   const menuRef = useRef<HTMLElement>({} as HTMLElement);
+  const [cookies] = useCookies(["token"]);
+  const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  const requestData = async () => {
+    const result = await fetch("http://localhost:5000/teacher-info", {
+      credentials: "include",
+      method: "GET",
+    });
+
+    // const json = await result.json();
+    if (result.status == 200) {
+      setIsAuthorized(true);
+    } else {
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    requestData();
+  }, [cookies]);
 
   const openMenu = () => {
     menuRef.current.classList.add("showMenu");
@@ -19,32 +43,38 @@ const App = () => {
   return (
     <div id="app">
       <div className="wrapper">
-        <BrowserRouter>
-          <nav id="left-navigation">
-            <Nav />
-          </nav>
+        {!isAuthorized ? (
+          <Routes>
+            <Route path="/login" Component={Login} />
+          </Routes>
+        ) : null}
 
-          <nav id="hamburger-nav" ref={menuRef}>
-            <HamburgerNav parent={menuRef} />
-          </nav>
+        <nav id="left-navigation">
+          <Nav />
+        </nav>
 
-          <div id="main-display">
-            <div id="top-nav-mobile" onClick={openMenu}>
-              <span>
-                <MenuIcon />
-              </span>
+        <nav id="hamburger-nav" ref={menuRef}>
+          <HamburgerNav parent={menuRef} />
+        </nav>
 
-              <h2>Autendance</h2>
-            </div>
+        <div id="main-display">
+          <div id="top-nav-mobile" onClick={openMenu}>
+            <span>
+              <MenuIcon />
+            </span>
+
+            <h2>Autendance</h2>
+          </div>
+          {isAuthorized ? (
             <Routes>
               <Route path="/" index Component={Dashboard} />
-              <Route path="/archives" index Component={Archive} />
-              <Route path="/person-search" index Component={PersonSearch} />
-              <Route path="/assign" index Component={Assign} />
-              <Route path="/settings" index Component={Settings} />
+              <Route path="/archives" Component={Archive} />
+              <Route path="/person-search" Component={PersonSearch} />
+              <Route path="/assign" Component={Assign} />
+              <Route path="/settings" Component={Settings} />
             </Routes>
-          </div>
-        </BrowserRouter>
+          ) : null}
+        </div>
       </div>
     </div>
   );
