@@ -1,0 +1,68 @@
+#login-page {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--background);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--secondary);
+  width: 90%;
+  max-width: 400px;
+  height: 90%;
+  max-height: 600px;
+  border-radius: 10px;
+  position: relative;
+}
+#login-page form div .parts {
+  margin: 1rem;
+}
+
+#login-page form div .parts * {
+  margin: 0.3rem;
+}
+
+#login-page form h1 {
+  position: absolute;
+  top: 25px;
+}
+
+#login-page form div {
+  display: flex;
+  flex-direction: column;
+}
+
+#login-page form .labels {
+  font-size: 1rem;
+}
+
+#login-page form #submit-button {
+  background: var(--linearPrimaryAccent);
+  outline: none;
+  padding: 10px 10px 10px 10px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+#login-page form .inputs {
+  background-color: var(--secondary);
+  border: 0;
+  outline: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 0.5rem;
+}
