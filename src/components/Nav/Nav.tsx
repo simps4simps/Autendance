@@ -1,6 +1,5 @@
 import "./Nav.css";
 import {
-  AssignmentIndIcon,
   InboxIcon,
   LogoutIcon,
   PersonSearchIcon,
@@ -9,6 +8,7 @@ import {
 } from "../IconsExport";
 
 import { Link, Outlet } from "react-router-dom";
+import { TeacherContext } from "../Context";
 
 const Nav = () => {
   return (
@@ -38,13 +38,6 @@ const Nav = () => {
           </div>
         </Link>
 
-        <Link to={"/assign"}>
-          <div className="links" title="Assign">
-            <AssignmentIndIcon />
-            <p>Assign</p>
-          </div>
-        </Link>
-
         <Link to={"/settings"}>
           <div className="links" id="settings-link" title="Settings">
             <SettingsIcon />
@@ -54,7 +47,9 @@ const Nav = () => {
 
         <div id="account-brief">
           <div id="user">
-            <p>User Name</p>
+            <TeacherContext.Consumer>
+              {(value) => <p>{value.userName}</p>}
+            </TeacherContext.Consumer>
           </div>
 
           <LogoutIcon />
