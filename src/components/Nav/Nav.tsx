@@ -7,10 +7,18 @@ import {
   SpaceDashboardIcon,
 } from "../IconsExport";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { TeacherContext } from "../Context";
+import { useCookies } from "react-cookie";
 
 const Nav = () => {
+  const location = useLocation().pathname.split("/")[1];
+  const [, , removeCookie] = useCookies();
+
+  const logout = () => {
+    removeCookie("token", { path: "/", domain: "localhost" });
+  };
+
   return (
     <>
       <div className="nav-wrapper">
@@ -18,28 +26,43 @@ const Nav = () => {
           <h2>Autendance</h2>
         </div>
         <Link to={"/"}>
-          <div className="links" title="Dashboard">
+          <div
+            className={`links ${location == "" ? "high-light" : ""}`}
+            title="Dashboard"
+          >
             <SpaceDashboardIcon />
             <p>Dashboard</p>
           </div>
         </Link>
 
         <Link to={"/archives"}>
-          <div className="links" title="Archives">
+          <div
+            className={`links ${location == "archives" ? "high-light" : ""}`}
+            title="Archives"
+          >
             <InboxIcon />
             <p>Archive</p>
           </div>
         </Link>
 
         <Link to={"/person-search"}>
-          <div className="links" title="Search">
+          <div
+            className={`links ${
+              location == "person-search" ? "high-light" : ""
+            }`}
+            title="Search"
+          >
             <PersonSearchIcon />
             <p>Search</p>
           </div>
         </Link>
 
         <Link to={"/settings"}>
-          <div className="links" id="settings-link" title="Settings">
+          <div
+            className={`links ${location == "settings" ? "high-light" : ""}`}
+            id="settings-link"
+            title="Settings"
+          >
             <SettingsIcon />
             <p>Settings</p>
           </div>
@@ -52,7 +75,9 @@ const Nav = () => {
             </TeacherContext.Consumer>
           </div>
 
-          <LogoutIcon />
+          <span onClick={logout}>
+            <LogoutIcon />
+          </span>
         </div>
       </div>
     </>
