@@ -1,24 +1,22 @@
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Nav from "./components/Nav/Nav";
 import Archive from "./components/Archive/Archive";
 import PersonSearch from "./components/PersonSearch/PersonSearch";
 import Settings from "./components/Settings/Settings";
-import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
-import { MenuIcon } from "./components/IconsExport";
-import { useEffect, useRef, useState } from "react";
 import Login from "./components/Login/Login";
+import AppLayout from "./components/AppLayout/AppLayout";
 import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
 import { TeacherContext, ITeacherContext } from "./components/Context";
 
 const App = () => {
-  const [cookies] = useCookies(["token"]);
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
+  const [cookies] = useCookies(["token"]);
+
   const [teacherContextValue, setTeacherContextValue] =
     useState<ITeacherContext>({} as ITeacherContext);
 
-  const menuRef = useRef<HTMLElement>({} as HTMLElement);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,45 +39,23 @@ const App = () => {
     });
   }, [cookies, navigate]);
 
-  const openMenu = () => {
-    menuRef.current.classList.add("showMenu");
-  };
-
   return (
     <div id="app">
       <div className="wrapper">
         <TeacherContext.Provider value={teacherContextValue}>
-          {!isAuthorized ? (
-            <Routes>
-              <Route path="/login" Component={Login} />
-            </Routes>
-          ) : null}
-
-          <nav id="left-navigation">
-            <Nav />
-          </nav>
-
-          <nav id="hamburger-nav" ref={menuRef}>
-            <HamburgerNav parent={menuRef} />
-          </nav>
-
-          <div id="main-display">
-            <div id="top-nav-mobile" onClick={openMenu}>
-              <span>
-                <MenuIcon />
-              </span>
-
-              <h2>Autendance</h2>
-            </div>
+          <Routes>
+            <Route path="*" element={<h1>No matching URL</h1>} />
             {isAuthorized ? (
-              <Routes>
+              <Route element={<AppLayout />}>
                 <Route path="/" index Component={Dashboard} />
                 <Route path="/archives" Component={Archive} />
                 <Route path="/person-search" Component={PersonSearch} />
                 <Route path="/settings" Component={Settings} />
-              </Routes>
-            ) : null}
-          </div>
+              </Route>
+            ) : (
+              <Route path="/login" Component={Login} />
+            )}
+          </Routes>
         </TeacherContext.Provider>
       </div>
     </div>
