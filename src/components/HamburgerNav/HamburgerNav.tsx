@@ -1,7 +1,6 @@
 import "./HamburgerNav.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
-  AssignmentIndIcon,
   InboxIcon,
   PersonSearchIcon,
   SettingsIcon,
@@ -47,21 +46,12 @@ const HamburgerNav: React.FC<HamburgerNavProps> = ({ parent }) => {
         </div>
       </Link>
 
-      <Link to={"/assign"}>
-        <div className="links-ham" title="Assign" onClick={toggleMenu}>
-          <AssignmentIndIcon />
-          <p>Assign</p>
-        </div>
-      </Link>
-
       <Link to={"/settings"}>
         <div className="links-ham" title="Settings" onClick={toggleMenu}>
           <SettingsIcon />
           <p>Settings</p>
         </div>
       </Link>
-
-      <Outlet />
     </div>
   );
 };
