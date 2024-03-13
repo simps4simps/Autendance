@@ -12,12 +12,17 @@ import { TeacherContext, ITeacherContext } from "./components/Context";
 
 const App = () => {
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
-  const [cookies] = useCookies(["token"]);
+  const [token] = useCookies(["token"]);
 
   const [teacherContextValue, setTeacherContextValue] =
     useState<ITeacherContext>({} as ITeacherContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Object.keys(token).length != 0) return;
+    setIsAuthorized(false);
+  }, [token]);
 
   useEffect(() => {
     fetch("http://localhost:5000/teacher-info", {
@@ -37,7 +42,7 @@ const App = () => {
         navigate("/login");
       }
     });
-  }, [cookies, navigate]);
+  }, [token, navigate, isAuthorized]);
 
   return (
     <div id="app">
