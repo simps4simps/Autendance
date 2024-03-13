@@ -7,7 +7,7 @@ import {
   SpaceDashboardIcon,
 } from "../IconsExport";
 
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TeacherContext } from "../Context";
 
 const Nav = () => {
@@ -54,8 +54,6 @@ const Nav = () => {
 
           <LogoutIcon />
         </div>
-
-        <Outlet />
       </div>
     </>
   );
