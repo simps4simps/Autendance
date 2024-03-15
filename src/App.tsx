@@ -9,15 +9,14 @@ import AppLayout from "./components/AppLayout/AppLayout";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { TeacherContext, ITeacherContext } from "./components/Context";
+import { apiURL } from "./components/Utils";
 
 const App = () => {
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
   const [token] = useCookies(["token"]);
-
+  const navigate = useNavigate();
   const [teacherContextValue, setTeacherContextValue] =
     useState<ITeacherContext>({} as ITeacherContext);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (Object.keys(token).length != 0) return;
@@ -25,23 +24,27 @@ const App = () => {
   }, [token]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/teacher-info", {
-      credentials: "include",
-      method: "GET",
-    }).then((result) => {
-      if (result.status == 200) {
-        setIsAuthorized(true);
-        result.json().then((res) => {
-          setTeacherContextValue({
-            firstName: res.firstName,
-            lastName: res.lastName,
-            userName: res.userName,
-          });
-        });
-      } else {
+    const fetchTeacherInfo = async () => {
+      const result = await fetch(`${apiURL}/teacher-info`, {
+        credentials: "include",
+        method: "GET",
+      });
+
+      if (result.status != 200) {
         navigate("/login");
+        return;
       }
-    });
+
+      setIsAuthorized(true);
+      const res = await result.json();
+      setTeacherContextValue({
+        firstName: res.firstName,
+        lastName: res.lastName,
+        userName: res.userName,
+      });
+    };
+
+    fetchTeacherInfo();
   }, [token, navigate, isAuthorized]);
 
   return (

@@ -10,13 +10,14 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { TeacherContext } from "../Context";
 import { useCookies } from "react-cookie";
+import { apiHostName } from "../Utils";
 
 const Nav = () => {
   const location = useLocation().pathname.split("/")[1];
   const [, , removeCookie] = useCookies();
 
   const logout = () => {
-    removeCookie("token", { path: "/", domain: "localhost" });
+    removeCookie("token", { path: "/", domain: apiHostName });
   };
 
   return (

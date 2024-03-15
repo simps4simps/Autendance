@@ -2,21 +2,30 @@ import { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 
+interface UserObject {
+  userName: string;
+  password: string;
+}
+
 const Login = () => {
   const navigate = useNavigate();
 
-  const [userName, setUserName] = useState<string>({} as string);
-  const [password, setPassword] = useState<string>({} as string);
+  const [user, setUser] = useState<UserObject>({} as UserObject);
 
-  const changeUserName = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const changeUserState = (ev: React.ChangeEvent<HTMLInputElement>) => {
     if (ev.target == null) return;
 
-    setUserName(ev.target.value);
-  };
-  const changePassword = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    if (ev.target == null) return;
-
-    setPassword(ev.target.value);
+    if (ev.target.name == "username-input") {
+      setUser({
+        userName: ev.target.value,
+        password: user.password,
+      });
+    } else {
+      setUser({
+        userName: user.userName,
+        password: ev.target.value,
+      });
+    }
   };
 
   const submitForm = async (ev: React.FormEvent) => {
@@ -29,8 +38,8 @@ const Login = () => {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({
-        userName,
-        password,
+        userName: user.userName,
+        password: user.password,
       }),
     });
 
@@ -54,7 +63,7 @@ const Login = () => {
               id="username-input"
               name="username-input"
               className="inputs"
-              onChange={changeUserName}
+              onChange={changeUserState}
             />
           </div>
 
@@ -67,7 +76,7 @@ const Login = () => {
               id="password-input"
               name="password-input"
               className="inputs"
-              onChange={changePassword}
+              onChange={changeUserState}
             />
           </div>
 
