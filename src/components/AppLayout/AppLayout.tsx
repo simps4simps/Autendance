@@ -1,6 +1,7 @@
 import { MenuIcon } from "../IconsExport";
 import HamburgerNav from "../HamburgerNav/HamburgerNav";
 import { Outlet } from "react-router-dom";
+import "./AppLayout.css";
 import Nav from "../Nav/Nav";
 import { useRef } from "react";
 
