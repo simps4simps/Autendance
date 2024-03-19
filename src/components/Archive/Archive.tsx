@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Archive.css";
 import { apiURL } from "../Utils";
 
@@ -9,21 +9,27 @@ interface Class {
 const Archive = () => {
   const [classes, setClasses] = useState<Class[]>([] as Class[]);
 
-  useEffect(() => {
-    const fetchClasses = async () => {
-      const result = await fetch(`${apiURL}/class-info`, {
-        credentials: "include",
-        method: "GET",
-      });
-      const resultJson: Class[] = await result.json();
+  const fetchClasses = async () => {
+    const result = await fetch(`${apiURL}/class-info`, {
+      credentials: "include",
+      method: "GET",
+    });
+    const resultJson: Class[] = await result.json();
 
-      return resultJson;
-    };
+    return resultJson;
+  };
 
-    fetchClasses().then((data) => setClasses(data));
-  }, []);
+  fetchClasses().then((data) => setClasses(data));
 
-  return <div>{classes.map((res) => res.name)}</div>;
+  return (
+    <div>
+      {classes.length != 0 ? (
+        classes.map((res) => res.name)
+      ) : (
+        <h1 id="loading-text">Loading</h1>
+      )}
+    </div>
+  );
 };
 
 export default Archive;
