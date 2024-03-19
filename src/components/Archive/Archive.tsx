@@ -17,10 +17,10 @@ const Archive = () => {
       });
       const resultJson: Class[] = await result.json();
 
-      setClasses(resultJson);
+      return resultJson;
     };
 
-    fetchClasses();
+    fetchClasses().then((data) => setClasses(data));
   }, []);
 
   return <div>{classes.map((res) => res.name)}</div>;
