@@ -19,6 +19,7 @@ const App = () => {
 
   useEffect(() => {
     if (Object.keys(token).length != 0) return;
+    https://drive.google.com/file/d/1ciJtQGR_GonGDGYQp3gGZ0SlVrFLRg7n/view?usp=drive_link
     setIsAuthorized(false);
   }, [token]);
 
