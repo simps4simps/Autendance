@@ -19,7 +19,7 @@ const App = () => {
 
   useEffect(() => {
     if (Object.keys(token).length != 0) return;
-    https://drive.google.com/file/d/1ciJtQGR_GonGDGYQp3gGZ0SlVrFLRg7n/view?usp=drive_link
+    https://drive.google.com/drive/folders/1BU9ib5xrK_ErVmyPHYQNz-SJ6RtrDZ1P?usp=sharing
     setIsAuthorized(false);
   }, [token]);
 
